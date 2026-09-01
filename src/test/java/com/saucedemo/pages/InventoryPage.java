@@ -1,6 +1,7 @@
 package com.saucedemo.pages;
 
 import com.saucedemo.pages.base.BasePage;
+import com.saucedemo.pages.components.HeaderComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,8 @@ import java.util.Random;
 public class InventoryPage extends BasePage {
 
     private final Random random = new Random();
+    private final HeaderComponent header;
+
 
     @FindBy(className = "title")
     private WebElement pageTitle;
@@ -27,6 +30,11 @@ public class InventoryPage extends BasePage {
 
     public InventoryPage(WebDriver driver){
         super(driver);
+        this.header = new HeaderComponent(driver);
+    }
+
+    public HeaderComponent header() {
+        return header;
     }
 
     public boolean isLoaded(){
