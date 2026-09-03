@@ -32,7 +32,7 @@ public class LoginPage extends BasePage {
 
     public InventoryPage loginAs(String username, String password){
         type(userNameInput,username);
-        type(userNameInput,password);
+        type(passwordInput,password);
         click(loginButton);
         return new InventoryPage(driver);
     }

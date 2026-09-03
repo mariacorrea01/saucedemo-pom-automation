@@ -41,15 +41,19 @@ public class InventoryPage extends BasePage {
         return isDisplayed(pageTitle)&&"Products".equals(getText(pageTitle));
     }
 
-    public int getCartItemCount(){
-        if(!isDisplayed(shoppingCartBadge)){
+    public int getCartItemCount() {
+        try {
+            String badgeText = getText(shoppingCartBadge);
+            return Integer.parseInt(badgeText);
+        } catch (Exception exception)
+        {
             return 0;
         }
-        return  Integer.parseInt(getText(shoppingCartBadge));
     }
 
-    public void goToCart(){
+    public CartPage goToCart(){
         click(shoppingCartIcon);
+        return new CartPage(driver);
     }
 
     public void addProductToCartByName(String productName){
