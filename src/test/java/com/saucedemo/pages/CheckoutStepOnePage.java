@@ -6,6 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * Page Object for the /checkout-step-one.html screen
+ * ("Checkout: Your Information").
+ */
 public class CheckoutStepOnePage extends BasePage {
 
     @FindBy(id = "first-name")
@@ -24,6 +28,13 @@ public class CheckoutStepOnePage extends BasePage {
         super(driver);
     }
 
+    /**
+     * Fills in the first name, last name and postal code fields, then
+     * submits the form.
+     *
+     * @param customerInfo the personal data to fill the form with
+     * @return the CheckoutStepTwoPage the user lands on
+     */
     public CheckoutStepTwoPage fillPersonalInformationAndContinue (CustomerInfo customerInfo){
         type(firstNameInput,customerInfo.getFirstName());
         type(lastNameInput,customerInfo.getLastName());
